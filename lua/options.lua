@@ -5,6 +5,9 @@
 -- Make line numbers default
 vim.o.number = true
 vim.o.relativenumber = true
+vim.opt.statuscolumn = '%s %l  ' -- space after %l = line number
+vim.opt.signcolumn = 'yes:1'
+vim.opt.numberwidth = 4
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -19,6 +22,12 @@ vim.o.showmode = false
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
+
+-- Tab settings
+vim.opt.tabstop = 4 -- Number of visual spaces per TAB
+vim.opt.softtabstop = 4 -- Number of spaces when pressing TAB
+vim.opt.shiftwidth = 4 -- Number of spaces for autoindent
+--vim.opt.expandtab = true  -- Convert tabs to spaces
 
 -- Enable break indent
 vim.o.breakindent = true

@@ -37,6 +37,21 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Keybinds from the Primagen
+-- greatest remap ever: allows paste without copying deleted text to the buffer
+vim.keymap.set('x', '<leader>p', '"_dp')
+
+-- map ctrl c to esc bc im dum
+vim.keymap.set('i', '<C-c>', '<Esc>')
+
+-- Allow moving highlighted code
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Make half page jumps stay in the middle
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
