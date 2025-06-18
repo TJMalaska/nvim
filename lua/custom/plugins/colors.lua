@@ -1,4 +1,5 @@
 return {
+  --kanagawa
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -32,7 +33,39 @@ return {
           light = 'lotus',
         },
       }
-      vim.cmd.colorscheme 'kanagawa'
+      --vim.cmd.colorscheme 'kanagawa'
+    end,
+  },
+  -- vague
+  {
+    'vague2k/vague.nvim',
+    config = function()
+      require('vague').setup { transparent = true }
+      vim.cmd 'colorscheme vague'
+      vim.cmd ':hi statusline guibg=NONE'
+    end,
+  },
+  --  rose pine
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      --      vim.cmd 'colorscheme rose-pine'
+    end,
+  },
+  -- gruvbox
+  {
+    'morhetz/gruvbox',
+    config = function()
+      vim.g.gruvbox_contrast_dark = 'hard'
+      --vim.cmd 'colorscheme gruvbox'
+    end,
+  },
+  -- jelly bean
+  {
+    'nanotech/jellybeans.vim',
+    config = function()
+      --vim.cmd 'colorscheme jellybeans'
     end,
   },
 }
