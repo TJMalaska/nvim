@@ -33,16 +33,18 @@ return {
           light = 'lotus',
         },
       }
-      --vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
   -- vague
   {
     'vague2k/vague.nvim',
     config = function()
-      require('vague').setup { transparent = true }
+      require('vague').setup {
+        -- transparent = true
+      }
       vim.cmd 'colorscheme vague'
-      vim.cmd ':hi statusline guibg=NONE'
+      --      vim.cmd ':hi statusline guibg=NONE'
     end,
   },
   --  rose pine
@@ -57,7 +59,7 @@ return {
   {
     'morhetz/gruvbox',
     config = function()
-      vim.g.gruvbox_contrast_dark = 'hard'
+      vim.g.gruvbox_contrast_dark = 'medium'
       --vim.cmd 'colorscheme gruvbox'
     end,
   },

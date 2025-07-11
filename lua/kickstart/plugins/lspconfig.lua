@@ -30,7 +30,16 @@ return {
       'saghen/blink.cmp',
     },
     config = function()
+      -- round boarder
+      -- 1) Tell Neovim to use a rounded border by default for *all* floating windows
+      vim.o.winborder = 'rounded' -- Neovim 0.11+ builtin winborder :contentReference[oaicite:0]{index=0}
+
+      -- 2) Also teach lspconfig’s UI to pick that up (for those handlers that still go through lspconfig.ui.windows)
+      require('lspconfig.ui.windows').default_options = {
+        border = 'rounded',
+      }
       -- Brief aside: **What is LSP?**
+
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
       --
@@ -208,7 +217,19 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--compile-commands-dir=' .. vim.fn.getcwd() .. '/compile_commands.json', -- or "./build/native"
+            '--fallback-style=none',
+          },
+          filetypes = { 'c', 'cpp' },
+          root_dir = require('lspconfig').util.root_pattern('compile_commands.json', '.git'),
+          -- disable other fancy features for now
+          settings = {},
+        },
+
         -- gopls = {},
         pyright = {},
         rust_analyzer = {},
